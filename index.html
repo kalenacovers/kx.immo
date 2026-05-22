@@ -1218,6 +1218,14 @@
   .fade-up.d4{animation-delay:.48s}
   @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .fade-up{animation:none;opacity:1;transform:none}
+    .scroll-ind .line{animation:none}
+    .bottom-nav-cta .pulse{animation:none}
+    *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  }
+
 </style>
 </head>
 <body>
@@ -1814,9 +1822,9 @@
     return obs;
   }
 
-  // Staggered scroll reveal — initial state set first, then observed
-  // Inline transition is cleared after animation so CSS hover transitions are not overridden
+  // Staggered scroll reveal — skipped entirely when user prefers reduced motion
   const REVEAL_SEL = '.service-card,.process-step,.testimonial,.region-card,.faq-item,.about-grid,.valuation-inner';
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   document.querySelectorAll(REVEAL_SEL).forEach((el,i)=>{
     el.style.opacity='0';
     el.style.transform='translateY(28px) scale(0.99)';
@@ -1836,6 +1844,7 @@
     },
     {threshold:0.08,rootMargin:'0px 0px -32px 0px'}
   );
+  }
 
   // Mobile header menu
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
