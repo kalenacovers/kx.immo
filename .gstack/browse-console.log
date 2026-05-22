@@ -5,3 +5,5 @@
 [2026-05-22T06:19:26.532Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
 [2026-05-22T06:23:44.360Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
 [2026-05-22T06:27:15.265Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
+[2026-05-22T06:31:08.655Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
+[2026-05-22T06:35:10.736Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
