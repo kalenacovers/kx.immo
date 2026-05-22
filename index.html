@@ -160,36 +160,64 @@
   .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
   .mobile-menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-7px) rotate(-45deg)}
   .mobile-menu{
-    position:absolute;
-    left:20px;right:20px;top:calc(100% + 10px);
-    display:none;
-    background:rgba(255,255,255,0.98);
-    border:1px solid var(--line);
-    border-radius:10px;
-    box-shadow:0 18px 48px rgba(23,20,18,0.12);
-    padding:8px;
+    position:fixed;inset:0;z-index:200;
+    display:none;flex-direction:column;
+    background:var(--white);
+    overflow-y:auto;
   }
-  .mobile-menu.is-open{display:block}
-  .mobile-menu a{
+  .mobile-menu.is-open{
+    display:flex;
+    animation:mmOpen .3s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes mmOpen{
+    from{opacity:0;transform:translateY(-10px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  .mobile-menu-header{
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 14px;
-    color:var(--ink);
-    font-size:14px;
-    font-weight:600;
-    border-radius:7px;
+    padding:16px 24px;
+    border-bottom:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .mobile-menu-close{
+    width:44px;height:44px;
+    border:none;background:transparent;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;color:var(--ink);
+    border-radius:8px;
     transition:background .2s,color .2s;
+    flex-shrink:0;
   }
-  .mobile-menu a:hover,.mobile-menu a.active{background:var(--grey-100);color:var(--red)}
-  .mobile-menu .mobile-menu-cta{
-    margin-top:6px;
-    background:var(--red);
-    color:var(--white);
-    justify-content:center;
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    font-size:12px;
+  .mobile-menu-close:hover{background:var(--grey-100)}
+  .mobile-menu-links{display:flex;flex-direction:column;flex:1}
+  .mobile-menu-links a{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 28px;
+    color:var(--ink);
+    font-family:var(--display);
+    font-size:1.5rem;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    border-bottom:1px solid var(--line);
+    transition:color .2s,background .2s;
   }
-  .mobile-menu .mobile-menu-cta:hover{background:var(--red-dark);color:var(--white)}
+  .mobile-menu-links a:hover,.mobile-menu-links a.active{color:var(--red);background:var(--grey-100)}
+  .mobile-menu-footer{
+    padding:24px 28px;
+    padding-bottom:max(28px,env(safe-area-inset-bottom,28px));
+    flex-shrink:0;
+  }
+  .mobile-menu-footer .mobile-menu-cta{
+    display:flex;align-items:center;justify-content:center;
+    width:100%;
+    background:var(--red);color:var(--white);
+    text-transform:uppercase;letter-spacing:0.08em;
+    font-size:0.8125rem;font-weight:600;
+    padding:18px 28px;
+    border-radius:10px;
+    transition:background .25s;
+  }
+  .mobile-menu-footer .mobile-menu-cta:hover{background:var(--red-dark)}
 
   /* ─────────────── HERO (Full Image) ─────────────── */
   .hero{
@@ -1324,16 +1352,29 @@
       <span></span>
       <span></span>
     </button>
-    <div class="mobile-menu" id="mobile-menu">
-      <a href="#leistungen">Leistungen</a>
-      <a href="#ablauf">Ablauf</a>
-      <a href="#julia">Über Julia</a>
-      <a href="#regionen">Regionen</a>
-      <a href="#stimmen">Stimmen</a>
-      <a href="#bewertung" class="mobile-menu-cta">Kostenlose Bewertung</a>
-    </div>
   </nav>
 </header>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="mobile-menu-header">
+    <a href="#" class="logo" aria-label="Kx Immobilien Startseite">
+      <img class="logo-img" src="assets/finallogo.avif" alt="Kx Immobilien">
+    </a>
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Menü schließen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu-links">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#ablauf">Ablauf</a>
+    <a href="#julia">Über Julia</a>
+    <a href="#regionen">Regionen</a>
+    <a href="#stimmen">Stimmen</a>
+  </div>
+  <div class="mobile-menu-footer">
+    <a href="#bewertung" class="mobile-menu-cta">Kostenlose Bewertung</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="main">
@@ -1956,11 +1997,8 @@
       mobileMenu.classList.toggle('is-open', !open);
     });
     mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMobileMenu));
-    document.addEventListener('click',e=>{
-      if(!mobileMenu.classList.contains('is-open')) return;
-      if(e.target.closest('.mobile-menu') || e.target.closest('.mobile-menu-toggle')) return;
-      closeMobileMenu();
-    });
+    const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
+    if(mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click',closeMobileMenu);
     document.addEventListener('keydown',e=>{ if(e.key === 'Escape') closeMobileMenu(); });
     window.addEventListener('resize',()=>{ if(window.innerWidth > 1024) closeMobileMenu(); },{passive:true});
   }
