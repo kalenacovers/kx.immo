@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(node .agents/skills/impeccable/scripts/load-context.mjs)",
+      "Bash(node \"C:\\\\Users\\\\macho\\\\.claude\\\\skills\\\\impeccable\\\\scripts\\\\load-context.mjs\")",
+      "Read(//c/Users/macho/.claude/skills/impeccable/reference/**)",
+      "Read(//c/Users/macho/.agents/skills/impeccable/reference/**)",
+      "Bash(Get-ChildItem -Path \"E:\\\\Clients\\\\Fech Puls\\\\Website\\\\lms\\\\kx.immo\" -Force)",
+      "Bash(Select-Object Name)"
     ]
   }
 }
