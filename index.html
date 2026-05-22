@@ -30,7 +30,7 @@
     --ease:cubic-bezier(0.22,1,0.36,1);
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
   body{
     font-family:var(--sans);
     color:var(--ink);
@@ -1205,12 +1205,17 @@
     .section-head{margin-bottom:56px}
     section.services,.process,.about,.regions,.testimonials,.faq,.final-cta,.valuation{padding:80px 20px}
     .services-grid,.regions-grid,.testimonials-grid,.process-grid,.contact-method{grid-template-columns:1fr}
+    /* Reset span 2 from 1024px rule — implicit second column causes overflow on 1-col grid */
+    .testimonials-grid .testimonial:first-child{grid-column:span 1}
     .form-row{grid-template-columns:1fr}
     .valuation-form{padding:28px 24px}
+    .service-card{padding:36px 28px}
     .footer-grid{grid-template-columns:1fr}
     .review-platforms{flex-direction:column;text-align:center}
     .review-platforms-list{gap:24px}
     .service-card.featured{transform:none}
+    /* Decorative accent extends off-screen on narrow viewports — hide it */
+    .about-image-wrap::after{display:none}
   }
 
   /* Page load animation */
