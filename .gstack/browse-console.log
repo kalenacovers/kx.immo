@@ -1,0 +1,7 @@
+[2026-05-22T06:12:56.463Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
+[2026-05-22T06:13:01.080Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
+[2026-05-22T06:13:06.948Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
+[2026-05-22T06:14:09.538Z] [log] {"bg":"linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.3) 100%), url(\"http://localhost:3000/assets/5c","ratio":"3 / 2"}
+[2026-05-22T06:19:26.532Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
+[2026-05-22T06:23:44.360Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
+[2026-05-22T06:27:15.265Z] [error] WebSocket connection to 'ws://127.0.0.1:3001/b7bc817e4a85c1a97d8d373971d42af8f451bdad' failed: Error during WebSocket handshake: Unexpected response code: 400
