@@ -668,27 +668,31 @@
     grid-template-columns:1fr 1.2fr;
     gap:80px;align-items:center;
   }
+  .about-image-wrap{
+    position:relative;
+  }
+  .about-image-wrap::after{
+    content:'';position:absolute;
+    bottom:-16px;right:-16px;
+    width:140px;height:140px;
+    border:2px solid var(--red);
+    z-index:0;
+    border-radius:16px;
+    opacity:0.5;
+  }
   .about-image{
     position:relative;
     aspect-ratio:3/2;
     background:var(--grey-100);
     overflow:hidden;
     border-radius:20px;
+    z-index:1;
   }
   .about-image .photo{
     position:absolute;inset:0;
     background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,0.3) 100%),
       url('assets/5cf718_87ffa939755144ae9ab222341b97bd30~mv2_d_2260_1507_s_2.jpg');
-    background-size:cover;background-position:center;
-  }
-  .about-image::after{
-    content:'';position:absolute;
-    bottom:-16px;right:-16px;
-    width:140px;height:140px;
-    border:2px solid var(--red);
-    z-index:-1;
-    border-radius:16px;
-    opacity:0.5;
+    background-size:cover;background-position:top center;
   }
   .about-image-tag{
     position:absolute;
@@ -1466,12 +1470,14 @@
 <!-- ABOUT -->
 <section class="about" id="julia">
   <div class="about-grid">
+    <div class="about-image-wrap">
     <div class="about-image">
       <div class="photo"></div>
       <div class="about-image-tag">
         <strong>Persönlich für Sie</strong>
         Julia Braun, Inhaberin
       </div>
+    </div>
     </div>
     <div class="about-content">
       <div class="eyebrow">Hinter Kx Immobilien</div>
