@@ -1164,14 +1164,17 @@
     50%{opacity:0.5;transform:scale(1.4)}
   }
   @media(max-width:640px){
-    .bottom-nav{bottom:16px;gap:0;padding:5px 6px}
+    .bottom-nav{bottom:max(16px,env(safe-area-inset-bottom,16px));gap:0;padding:5px 6px}
     .bottom-nav-link{font-size:11px;padding:7px 10px}
     .bottom-nav-sep{display:none}
     .bottom-nav-cta{font-size:11px;padding:8px 14px}
+    /* Drop secondary links so the pill fits on narrow viewports (~375px) */
+    .bottom-nav-link[href="#ablauf"],
+    .bottom-nav-link[href="#regionen"]{display:none}
   }
   @media(max-width:400px){
-    .bottom-nav-link:not(:last-of-type){display:none}
-    .bottom-nav-link.show-xs{display:flex}
+    /* Ultra-narrow: CTA pill only */
+    .bottom-nav-link{display:none}
   }
 
   /* ─────────────── RESPONSIVE ─────────────── */
